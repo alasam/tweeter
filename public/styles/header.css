@@ -1,0 +1,24 @@
+header {
+  display:flex;
+  height: 400px;
+  width: 100%;
+  margin-top: 120px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; 
+  background-color: #c9c2c2;
+  background-image: url("https://www.transparenttextures.com/patterns/robots.png");
+/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+}
+
+
+
+.avatar {
+
+}
+
+.username {
+  display: block;
+  align-self: center;
+  color: #192754;
+}
