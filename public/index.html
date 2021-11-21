@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
     <link rel="stylesheet" href="/styles/header.css" type="text/css" />
     <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/old-tweets.css" type="text/css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- External JS -->
@@ -55,6 +56,7 @@
 
     <!-- Page-specific (main) content here -->
     <main class="container">
+
       <section class="new-tweet">
         <h2>Compose Tweet</h2>
         <form>
@@ -66,6 +68,37 @@
           </div>
         </form>
       </section>
+
+  <section id="old-tweets">
+    <article>
+      <article>
+      <header>
+
+        <div class="icon-name"></div>
+        <i class="fa-solid fa-robot"></i>
+        <span class="name">Anthony Lasam</span>
+        </div>
+
+        <div class="tweet-user">
+        <span>@antLas</span>
+        </div>
+
+      </header>
+      <div class="tweet-message"> tweet tweet tweet</div>
+      <footer class="tweet-footer">
+        <output name="date" class="date" for="old-tweets">10 days ago</output>
+        
+        <div class="tweet-icons">
+        <i class="fa-solid fa-flag"></i>
+        <i class="fa-solid fa-retweet"></i>
+        <i class="fa-solid fa-heart"></i>
+        </div>
+      </footer>
+      
+      </article>
+    </article>
+  </section>
+
     </main>
   </body>
 </html>

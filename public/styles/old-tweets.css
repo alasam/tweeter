@@ -1,0 +1,66 @@
+#old-tweets {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+
+
+article {
+  display: flex;
+  flex-direction: column;
+  border: 4px solid #545149;
+  padding: 1em 0.05em;
+  width: 100%;
+  justify-content: center;
+}
+
+article:hover {
+  box-shadow: 2.5px 5px #888888;
+}
+
+
+article > header{
+  display: flex;
+  height: unset;
+  margin-top: unset;
+  background: none;
+  justify-content: unset;
+  flex-direction: row;
+}
+
+
+
+.icon-name {
+margin-left: 1%;
+}
+
+.name {
+  padding: 5px;
+}
+
+.tweet-user {
+  margin-left: auto;
+  padding: 5px;
+}
+
+.tweet-message {
+  border-bottom: 4px solid#545149;
+}
+
+
+.tweet-footer {
+  display:flex;
+  justify-content: space-evenly;
+  position: relative;
+}
+
+.date {
+  width: 100%;
+}
+.tweet-icons {
+
+  width: 10%;
+}
