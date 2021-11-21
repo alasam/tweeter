@@ -15,6 +15,7 @@ article {
   padding: 1em 0.05em;
   width: 100%;
   justify-content: center;
+  margin-top: 2em;
 }
 
 article:hover {
@@ -43,11 +44,15 @@ margin-left: 1%;
 
 .tweet-user {
   margin-left: auto;
-  padding: 5px;
+  padding: 10px;
+  color: #888888;
 }
 
 .tweet-message {
   border-bottom: 4px solid#545149;
+  padding: 2em;
+  margin-left: 1%;
+  margin-right: 1%;
 }
 
 
@@ -55,12 +60,21 @@ margin-left: 1%;
   display:flex;
   justify-content: space-evenly;
   position: relative;
+  font-size: .7em;
+  padding-top: .5em;
+  margin-left: 2%;
 }
 
 .date {
   width: 100%;
 }
-.tweet-icons {
 
+.tweet-icons {
+  font-size: 1em;
   width: 10%;
+}
+
+.tweet-icons i:hover {
+  color: rgb(29, 42, 158);
+
 }
