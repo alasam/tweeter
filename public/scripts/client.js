@@ -4,11 +4,22 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
+// Renders tweets 
 const renderTweets = function(tweets) {
   for (let tweet of tweets) {
     const $tweet = createTweetElement(tweet);
-      $('#old-tweets').prepend($tweet);
+    $('#old-tweets').prepend($tweet);
   }
+  $('#tweet-container').empty();
+  $('#tweet-text').val('');
+};
+
+const loadTweets = function() {
+  $.ajax("/tweets", {
+    method: "GET"})
+    .then(function(tweets) {
+      renderTweets(tweets);
+    });
 };
 
 const createTweetElement = function(tweetData) {
@@ -37,32 +48,52 @@ const createTweetElement = function(tweetData) {
       </footer>
     </article>`);
   return tweetTemplate;
-}
+};
 
-const loadTweets = function () {
-  $.ajax("/tweets", {
-    method: "GET"})
-    .then(function(tweets) {
-      renderTweets(tweets);
-  });
-}
+const successfulTweet = function() {
+  loadTweets();
+  $("#counter").val("140");
+};
 
 $(document).ready(function() {
 
   $("#post-tweet").submit(function(event) {
     event.preventDefault();
 
-    $.ajax({
-      type: "POST",
-      data: $("#post-tweet").serialize(),
-    });
-
-
+    const value = $(this).find("#tweet-text").val();
+    if (!value) {
+      generateError("#error", "&#9940;Your tweet cannot be blank!&#9940;");
+    } else if (value.length > 140) {
+      generateError("#error", "&#9940;Your tweet is too long!&#9940;");
+    } else {
+      $.ajax("/tweets", {
+        type: "POST",
+        data: $("#post-tweet").serialize(),
+        success: successfulTweet()
+      })
+        .then(() => {
+          $.ajax({
+            url: "http://localhost:8080/tweets",
+            method: "GET",
+          });
+        });
+    }
   });
 
 
 
   loadTweets();
-})
+});
+
+const generateError = function(location, message) {
+  return $(location).html(message).show().slidedown(
+  );
+};
+
+const escape = function(str) {
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
 
 

@@ -39,33 +39,34 @@
 
       <div class="writeTweet">
         <p><b>Write</b> a new tweet</p>
-        <i class="fas fa-angle-double-down"></i>
+        <a href="#top"><i class="fas fa-angle-double-down"></i></a>
       </div>
     </nav>
 
     <!-- Header -->
   
-    <header>
+    <header id="profile-header">
       <div class="avatar">
           <img src="/images/profile-hex.png"> 
       </div>
       <br>
       <div class="username">
-          <h2>Anthony L</h2>
+          <h2>Anthony Lasam</h2>
       </div>
   </header>
 
     <!-- Page-specific (main) content here -->
     <main class="container">
-
+    
       <section class="new-tweet">
+        <div id="error"></div>
         <h2>Compose Tweet</h2>
         <form action="/tweets" method="POST" id="post-tweet">
           <label for="tweet-text">What are you humming about?</label>
           <textarea name="text" id="tweet-text"></textarea>
           <div class="bottom">
             <button class= "tweet-button" type="submit">Tweet</button>
-            <output name="counter" class="counter" for="tweet-text">140</output>
+            <output name="counter" id="counter" for="tweet-text">140</output>
           </div>
         </form>
       </section>
