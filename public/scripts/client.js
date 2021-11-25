@@ -4,16 +4,16 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-// Renders tweets 
+// Renders tweets using the blueprint from createTweetElement function and push to #old-tweets
 const renderTweets = function(tweets) {
   for (let tweet of tweets) {
     const $tweet = createTweetElement(tweet);
     $('#old-tweets').prepend($tweet);
   }
-  $('#tweet-container').empty();
   $('#tweet-text').val('');
 };
 
+// Using AJAX to GET data for new tweets
 const loadTweets = function() {
   $.ajax("/tweets", {
     method: "GET"})
@@ -22,6 +22,7 @@ const loadTweets = function() {
     });
 };
 
+// Blueprint for tweets to be filled with data
 const createTweetElement = function(tweetData) {
   const {user, content, created_at} = tweetData;
   const tweetTemplate = $(`<article>
@@ -50,20 +51,17 @@ const createTweetElement = function(tweetData) {
   return tweetTemplate;
 };
 
-const successfulTweet = function() {
-  loadTweets();
-  $("#counter").val("140");
-};
 
+// Calling new Tweets, preventing page from refreshing
 $(document).ready(function() {
-
   $("#post-tweet").submit(function(event) {
     event.preventDefault();
 
-    const value = $(this).find("#tweet-text").val();
-    if (!value) {
+// Checking if tweet is valid and posting, and if not producing correct error display
+    const userEntry = $(this).find("#tweet-text").val();
+    if (!userEntry) {
       generateError("#error", "&#9940;Your tweet cannot be blank!&#9940;");
-    } else if (value.length > 140) {
+    } else if (userEntry.length > 140) {
       generateError("#error", "&#9940;Your tweet is too long!&#9940;");
     } else {
       $.ajax("/tweets", {
@@ -79,17 +77,25 @@ $(document).ready(function() {
         });
     }
   });
-
-
-
   loadTweets();
 });
 
+
+// Extra Functions
+
+// Function for successful tweet action
+const successfulTweet = function() {
+  loadTweets();
+  $("#counter").val("140");
+};
+
+// Function for generating error message
 const generateError = function(location, message) {
   return $(location).html(message).show().slidedown(
   );
 };
 
+// Function for preventing cross-site attacks
 const escape = function(str) {
   let div = document.createElement("div");
   div.appendChild(document.createTextNode(str));

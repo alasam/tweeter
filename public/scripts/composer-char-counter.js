@@ -1,3 +1,4 @@
+// Character counter for tweet input
 $(document).ready(function() {
   $("#tweet-text").on("input", function() {
     const charLimit = 140;
