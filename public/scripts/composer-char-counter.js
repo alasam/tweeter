@@ -5,5 +5,10 @@ $(document).ready(function() {
     const charLeft = charLimit - $(this).val().length;
     const counter = $(this).parent().find("#counter");
     counter.text(charLeft);
+    if (charLeft < 0) {
+      counter.addClass("counter-over")
+    } else {
+      counter.removeClass("counter-over")
+    }
   });
 });

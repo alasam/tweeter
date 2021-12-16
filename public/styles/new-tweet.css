@@ -44,3 +44,7 @@ label[for=tweet-text] {
   margin-left: 0%;
   justify-items: right;
 }
+
+.counter-over {
+  color: red;
+}
